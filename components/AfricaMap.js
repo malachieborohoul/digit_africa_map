@@ -68,8 +68,8 @@ const AfricaMap = () => {
             infrastructures: "National Data Center",
             initiatives: "Healthcare, Smart Cities",
             internet: "58%"
-          },
-          {
+        },
+        {
             code: "AO",
             name: "Angola",
             iaStrategy: "No",
@@ -79,8 +79,8 @@ const AfricaMap = () => {
             infrastructures: "Angosat",
             initiatives: "Education",
             internet: "32%"
-          },
-          {
+        },
+        {
             code: "BJ",
             name: "Benin",
             iaStrategy: "Yes",
@@ -90,9 +90,9 @@ const AfricaMap = () => {
             infrastructures: "Benin Data Center",
             initiatives: "Agriculture, E-government",
             internet: "45%"
-          },
-          // Continue with all 54 African countries...
-          {
+        },
+        // Continue with all 54 African countries...
+        {
             code: "BW",
             name: "Botswana",
             iaStrategy: "Yes",
@@ -102,8 +102,8 @@ const AfricaMap = () => {
             infrastructures: "Botswana Innovation Hub",
             initiatives: "Mining, Healthcare",
             internet: "64%"
-          },
-          {
+        },
+        {
             code: "BF",
             name: "Burkina Faso",
             iaStrategy: "No",
@@ -113,8 +113,8 @@ const AfricaMap = () => {
             infrastructures: "Burkina Data Center",
             initiatives: "Agriculture",
             internet: "30%"
-          },
-          {
+        },
+        {
             code: "BI",
             name: "Burundi",
             iaStrategy: "No",
@@ -124,8 +124,8 @@ const AfricaMap = () => {
             infrastructures: "Local Cloud",
             initiatives: "E-government",
             internet: "28%"
-          },
-          {
+        },
+        {
             code: "CV",
             name: "Cape Verde",
             iaStrategy: "Yes",
@@ -135,8 +135,8 @@ const AfricaMap = () => {
             infrastructures: "CV Cables",
             initiatives: "Smart Tourism",
             internet: "75%"
-          },
-          {
+        },
+        {
             code: "CM",
             name: "Cameroon",
             iaStrategy: "Yes",
@@ -146,9 +146,9 @@ const AfricaMap = () => {
             infrastructures: "GDC Yaoundé",
             initiatives: "Healthcare, Education",
             internet: "65%"
-          },
-          // Continue with remaining countries...
-          {
+        },
+        // Continue with remaining countries...
+        {
             code: "CF",
             name: "Central African Republic",
             iaStrategy: "No",
@@ -158,8 +158,8 @@ const AfricaMap = () => {
             infrastructures: "National Data Center",
             initiatives: "E-government",
             internet: "11%"
-          },
-          {
+        },
+        {
             code: "TD",
             name: "Chad",
             iaStrategy: "No",
@@ -169,9 +169,9 @@ const AfricaMap = () => {
             infrastructures: "Chad Cloud",
             initiatives: "Agriculture",
             internet: "18%"
-          },
-          // Include all countries through to Zimbabwe...
-          {
+        },
+        // Include all countries through to Zimbabwe...
+        {
             code: "ZW",
             name: "Zimbabwe",
             iaStrategy: "Yes",
@@ -181,9 +181,9 @@ const AfricaMap = () => {
             infrastructures: "Harare Data Hub",
             initiatives: "Agriculture, Mining",
             internet: "59%"
-          },
+        },
 
-          {
+        {
             code: "EG",
             name: "Egypt",
             iaStrategy: "Yes",
@@ -193,8 +193,8 @@ const AfricaMap = () => {
             infrastructures: "Smart Village, Data Centers",
             initiatives: "Healthcare, Agriculture, Education",
             internet: "57%"
-          },
-          {
+        },
+        {
             code: "GH",
             name: "Ghana",
             iaStrategy: "Yes",
@@ -204,8 +204,8 @@ const AfricaMap = () => {
             infrastructures: "Accra Digital Center",
             initiatives: "Agriculture, Health, Education",
             internet: "50%"
-          },
-          {
+        },
+        {
             code: "KE",
             name: "Kenya",
             iaStrategy: "Yes",
@@ -215,8 +215,8 @@ const AfricaMap = () => {
             infrastructures: "Konza Technopolis, National Data Center",
             initiatives: "Agriculture, Healthcare, Education",
             internet: "43%"
-          },
-          {
+        },
+        {
             code: "NG",
             name: "Nigeria",
             iaStrategy: "Yes",
@@ -226,8 +226,8 @@ const AfricaMap = () => {
             infrastructures: "Galaxy Backbone Data Center",
             initiatives: "Finance, Agriculture, Health",
             internet: "36%"
-          },
-          {
+        },
+        {
             code: "RW",
             name: "Rwanda",
             iaStrategy: "Yes",
@@ -237,8 +237,8 @@ const AfricaMap = () => {
             infrastructures: "Kigali Innovation City",
             initiatives: "Healthcare, Agriculture, Governance",
             internet: "26%"
-          },
-          {
+        },
+        {
             code: "ST",
             name: "São Tomé and Príncipe",
             iaStrategy: "No",
@@ -248,8 +248,8 @@ const AfricaMap = () => {
             infrastructures: "STP Cloud Node",
             initiatives: "Education",
             internet: "30%"
-          },
-          {
+        },
+        {
             code: "SN",
             name: "Senegal",
             iaStrategy: "Yes",
@@ -259,8 +259,8 @@ const AfricaMap = () => {
             infrastructures: "Digital Technology Park of Diamniadio",
             initiatives: "Agriculture, Education, Governance",
             internet: "46%"
-          },
-          {
+        },
+        {
             code: "TN",
             name: "Tunisia",
             iaStrategy: "Yes",
@@ -270,8 +270,8 @@ const AfricaMap = () => {
             infrastructures: "El Ghazala Technopark",
             initiatives: "Healthcare, Industry, Education",
             internet: "66%"
-          },
-          {
+        },
+        {
             code: "MA",
             name: "Morocco",
             iaStrategy: "Yes",
@@ -281,8 +281,8 @@ const AfricaMap = () => {
             infrastructures: "Technopark Casablanca",
             initiatives: "Agriculture, Industry, Education",
             internet: "74%"
-          },
-          {
+        },
+        {
             code: "ZA",
             name: "South Africa",
             iaStrategy: "Yes",
@@ -292,8 +292,8 @@ const AfricaMap = () => {
             infrastructures: "Data Centers by Microsoft and Huawei",
             initiatives: "Mining, Healthcare, Education",
             internet: "68%"
-          },
-          {
+        },
+        {
             code: "MU",
             name: "Mauritius",
             iaStrategy: "Yes",
@@ -303,8 +303,8 @@ const AfricaMap = () => {
             infrastructures: "Ebene Cybercity",
             initiatives: "Fintech, Healthcare, Agriculture",
             internet: "65%"
-          },
-          {
+        },
+        {
             code: "UG",
             name: "Uganda",
             iaStrategy: "No",
@@ -314,8 +314,8 @@ const AfricaMap = () => {
             infrastructures: "National Data Center",
             initiatives: "Agriculture, Health",
             internet: "24%"
-          },
-          {
+        },
+        {
             code: "TZ",
             name: "Tanzania",
             iaStrategy: "No",
@@ -325,8 +325,8 @@ const AfricaMap = () => {
             infrastructures: "National ICT Broadband Backbone",
             initiatives: "Healthcare, Agriculture",
             internet: "22%"
-          },
-          {
+        },
+        {
             code: "SD",
             name: "Sudan",
             iaStrategy: "No",
@@ -336,8 +336,8 @@ const AfricaMap = () => {
             infrastructures: "Sudan National Data Center",
             initiatives: "Agriculture, Health",
             internet: "28%"
-          },
-          {
+        },
+        {
             code: "ET",
             name: "Ethiopia",
             iaStrategy: "Yes",
@@ -347,8 +347,8 @@ const AfricaMap = () => {
             infrastructures: "National Data Center",
             initiatives: "Agriculture, Education, Health",
             internet: "20%"
-          },
-          {
+        },
+        {
             code: "SC",
             name: "Seychelles",
             iaStrategy: "Yes",
@@ -358,8 +358,8 @@ const AfricaMap = () => {
             infrastructures: "Seychelles Data Cloud",
             initiatives: "Tourism, Environment",
             internet: "76%"
-          },
-          {
+        },
+        {
             code: "SL",
             name: "Sierra Leone",
             iaStrategy: "No",
@@ -369,8 +369,8 @@ const AfricaMap = () => {
             infrastructures: "National Data Center",
             initiatives: "Healthcare, Agriculture",
             internet: "15%"
-          },
-          {
+        },
+        {
             code: "ML",
             name: "Mali",
             iaStrategy: "No",
@@ -380,8 +380,8 @@ const AfricaMap = () => {
             infrastructures: "National Data Center",
             initiatives: "Agriculture, Education",
             internet: "12%"
-          },
-          {
+        },
+        {
             code: "NE",
             name: "Niger",
             iaStrategy: "No",
@@ -391,8 +391,8 @@ const AfricaMap = () => {
             infrastructures: "National Data Center",
             initiatives: "Agriculture, Education",
             internet: "16.9%"
-          },
-          {
+        },
+        {
             code: "KM",
             name: "Comoros",
             iaStrategy: "No",
@@ -402,8 +402,8 @@ const AfricaMap = () => {
             infrastructures: "Comoros Data Center",
             initiatives: "E-government",
             internet: "20%"
-          },
-          {
+        },
+        {
             code: "CG",
             name: "Republic of the Congo",
             iaStrategy: "Yes",
@@ -413,8 +413,8 @@ const AfricaMap = () => {
             infrastructures: "Brazzaville Tech Park",
             initiatives: "Healthcare, Smart Cities",
             internet: "34%"
-          },
-          {
+        },
+        {
             code: "CD",
             name: "Democratic Republic of the Congo",
             iaStrategy: "No",
@@ -424,8 +424,8 @@ const AfricaMap = () => {
             infrastructures: "National Tech Center",
             initiatives: "Education",
             internet: "17%"
-          },
-          {
+        },
+        {
             code: "CI",
             name: "Côte d'Ivoire",
             iaStrategy: "Yes",
@@ -435,8 +435,8 @@ const AfricaMap = () => {
             infrastructures: "Abidjan Digital Center",
             initiatives: "Agriculture, Fintech",
             internet: "46%"
-          },
-          {
+        },
+        {
             code: "DJ",
             name: "Djibouti",
             iaStrategy: "No",
@@ -446,8 +446,8 @@ const AfricaMap = () => {
             infrastructures: "Djibouti Internet Exchange",
             initiatives: "Logistics",
             internet: "56%"
-          },
-          {
+        },
+        {
             code: "EG",
             name: "Egypt",
             iaStrategy: "Yes",
@@ -457,8 +457,8 @@ const AfricaMap = () => {
             infrastructures: "Smart Village Cairo",
             initiatives: "Healthcare, Fintech",
             internet: "72%"
-          },
-          {
+        },
+        {
             code: "GQ",
             name: "Equatorial Guinea",
             iaStrategy: "No",
@@ -468,8 +468,8 @@ const AfricaMap = () => {
             infrastructures: "Equatorial Data Hub",
             initiatives: "E-learning",
             internet: "26%"
-          },
-          {
+        },
+        {
             code: "ER",
             name: "Eritrea",
             iaStrategy: "No",
@@ -479,8 +479,8 @@ const AfricaMap = () => {
             infrastructures: "Eritrea Internet Node",
             initiatives: "Education",
             internet: "8%"
-          },
-          {
+        },
+        {
             code: "SZ",
             name: "Eswatini",
             iaStrategy: "Yes",
@@ -490,8 +490,8 @@ const AfricaMap = () => {
             infrastructures: "Mbabane Data Center",
             initiatives: "E-government",
             internet: "43%"
-          },
-          {
+        },
+        {
             code: "ET",
             name: "Ethiopia",
             iaStrategy: "Yes",
@@ -501,8 +501,8 @@ const AfricaMap = () => {
             infrastructures: "Addis Tech Park",
             initiatives: "Agriculture, Smart Cities",
             internet: "25%"
-          },
-          {
+        },
+        {
             code: "GA",
             name: "Gabon",
             iaStrategy: "Yes",
@@ -512,8 +512,8 @@ const AfricaMap = () => {
             infrastructures: "Digital Gabon Hub",
             initiatives: "Environment, Smart Cities",
             internet: "62%"
-          },
-          {
+        },
+        {
             code: "GM",
             name: "Gambia",
             iaStrategy: "No",
@@ -523,8 +523,8 @@ const AfricaMap = () => {
             infrastructures: "Gambia Tech Space",
             initiatives: "E-government",
             internet: "29%"
-          },
-          {
+        },
+        {
             code: "GN",
             name: "Guinea",
             iaStrategy: "No",
@@ -534,8 +534,8 @@ const AfricaMap = () => {
             infrastructures: "Guinea Cloud Center",
             initiatives: "Health, Education",
             internet: "33%"
-          },
-          {
+        },
+        {
             code: "GW",
             name: "Guinea-Bissau",
             iaStrategy: "No",
@@ -545,8 +545,8 @@ const AfricaMap = () => {
             infrastructures: "Guinea-Bissau Data Node",
             initiatives: "Education",
             internet: "15%"
-          },
-          {
+        },
+        {
             code: "LS",
             name: "Lesotho",
             iaStrategy: "No",
@@ -556,8 +556,8 @@ const AfricaMap = () => {
             infrastructures: "Lesotho Data Hub",
             initiatives: "Healthcare",
             internet: "41%"
-          },
-          {
+        },
+        {
             code: "LR",
             name: "Liberia",
             iaStrategy: "No",
@@ -567,8 +567,8 @@ const AfricaMap = () => {
             infrastructures: "Liberia Cloud Gateway",
             initiatives: "E-learning",
             internet: "26%"
-          },
-          {
+        },
+        {
             code: "LY",
             name: "Libya",
             iaStrategy: "No",
@@ -578,8 +578,8 @@ const AfricaMap = () => {
             infrastructures: "Libya Tech Park",
             initiatives: "Energy, Transport",
             internet: "21%"
-          },
-          {
+        },
+        {
             code: "MG",
             name: "Madagascar",
             iaStrategy: "No",
@@ -589,8 +589,8 @@ const AfricaMap = () => {
             infrastructures: "Madagascar Data Exchange",
             initiatives: "Agriculture, Environment",
             internet: "34%"
-          },
-          {
+        },
+        {
             code: "MW",
             name: "Malawi",
             iaStrategy: "No",
@@ -600,8 +600,8 @@ const AfricaMap = () => {
             infrastructures: "Malawi Tech Park",
             initiatives: "Healthcare, Education",
             internet: "24%"
-          },
-          {
+        },
+        {
             code: "MR",
             name: "Mauritania",
             iaStrategy: "No",
@@ -611,8 +611,8 @@ const AfricaMap = () => {
             infrastructures: "Mauritania Digital Gateway",
             initiatives: "E-government, Infrastructure",
             internet: "22%"
-          },
-          {
+        },
+        {
             code: "MZ",
             name: "Mozambique",
             iaStrategy: "No",
@@ -622,8 +622,8 @@ const AfricaMap = () => {
             infrastructures: "Mozambique Internet Hub",
             initiatives: "Disaster Management, Health",
             internet: "23%"
-          },
-          {
+        },
+        {
             code: "NA",
             name: "Namibia",
             iaStrategy: "Yes",
@@ -633,8 +633,8 @@ const AfricaMap = () => {
             infrastructures: "Windhoek Data Park",
             initiatives: "Wildlife Monitoring, Smart Cities",
             internet: "51%"
-          },
-          {
+        },
+        {
             code: "RE",
             name: "Réunion",
             iaStrategy: "No",
@@ -644,8 +644,8 @@ const AfricaMap = () => {
             infrastructures: "Indian Ocean Tech Center",
             initiatives: "Sustainable Energy",
             internet: "85%"
-          },
-          {
+        },
+        {
             code: "SO",
             name: "Somalia",
             iaStrategy: "No",
@@ -655,8 +655,8 @@ const AfricaMap = () => {
             infrastructures: "Somalia Internet Exchange",
             initiatives: "E-government",
             internet: "11%"
-          },
-          {
+        },
+        {
             code: "SS",
             name: "South Sudan",
             iaStrategy: "No",
@@ -666,11 +666,11 @@ const AfricaMap = () => {
             infrastructures: "South Sudan Digital Node",
             initiatives: "PeaceTech, Education",
             internet: "9%"
-          },
-     
-        
-        
-        
+        },
+
+
+
+
     ];
 
     const selectedCount = countryData.find(country => country.code === selectedCountry);
@@ -693,47 +693,59 @@ const AfricaMap = () => {
             </div>
 
             {/* Conteneur de la carte */}
-            <div
-                ref={containerRef}
-                className="w-full h-[70vh] max-w-[2000px] mb-8 overflow-hidden relative"
-            >
-                <svg
-                    ref={svgRef}
-                    viewBox="0 0 1000 1000"
-                    className="w-full h-full bg-white transition-transform duration-300"
-                    style={{
-                        transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
-                        cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
-                    }}
-                    preserveAspectRatio="xMidYMid meet"
-                    // Ajoutez ces handlers au conteneur SVG :
-                    onMouseDown={handleMouseDown}
-                    onMouseMove={handleMouseMove}
-                    onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseUp}
-                >
-                    {africanCountries.map((country) => (
-                        <path
-                            key={country.id}
-                            id={country.id}
-                            d={country.d}
-                            className={`stroke-gray-800 stroke-[0.7] transition-all duration-150 cursor-pointer ${getCountryFill(country.id)}`}
-                            onClick={() => handleCountryClick(country.id)}
-                            onMouseEnter={() => setHoveredCountry(country.id)}
-                            onMouseLeave={() => setHoveredCountry(null)}
-                            aria-label={country.name}
-                        />
-                    ))}
-                </svg>
-            </div>
+            <div className='flex '>
+            <div className="relative w-2/4 lg:max-w-xl lg:shrink-0 xl:max-w-2xl ">
+                  <h1 className="text-pretty  text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                  Mapping AI in Africa
+                  </h1>
+                  <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+                  An interactive map of Africa that reveals each country's journey in artificial intelligence. Click on a country to explore its AI strategy, key government ministries and agencies, research groups and associations, digital infrastructure, internet penetration, and AI-driven initiatives across sectors such as education, health, agriculture, and more.
+                  A visual tool to understand how Africa is shaping its AI future.
+                  </p>
+                </div>
 
+                <div
+                    ref={containerRef}
+                    className="w-2/4 h-[70vh] max-w-[2000px] mb-8 overflow-hidden relative"
+                >
+                    <svg
+                        ref={svgRef}
+                        viewBox="0 0 1000 1000"
+                        className="w-full h-full  transition-transform duration-300"
+                        style={{
+                            transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+                            cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
+                        }}
+                        preserveAspectRatio="xMidYMid meet"
+                        // Ajoutez ces handlers au conteneur SVG :
+                        onMouseDown={handleMouseDown}
+                        onMouseMove={handleMouseMove}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseUp}
+                    >
+                        {africanCountries.map((country) => (
+                            <path
+                                key={country.id}
+                                id={country.id}
+                                d={country.d}
+                                className={`stroke-gray-800 stroke-[0.7] transition-all duration-150 cursor-pointer ${getCountryFill(country.id)}`}
+                                onClick={() => handleCountryClick(country.id)}
+                                onMouseEnter={() => setHoveredCountry(country.id)}
+                                onMouseLeave={() => setHoveredCountry(null)}
+                                aria-label={country.name}
+                            />
+                        ))}
+                    </svg>
+                </div>
+
+            </div>
 
             {/* Tableau d'informations */}
             <div className="w-full  p-6">
                 {selectedCount ? (
                     <>
                         <h2 className="text-2xl font-bold mb-6 text-gray-800">
-                        AI initiatives in {selectedCount.name} ({selectedCount.code})
+                            AI initiatives in {selectedCount.name} ({selectedCount.code})
                         </h2>
 
                         <div className="px-4 sm:px-6 lg:px-8">
@@ -746,33 +758,33 @@ const AfricaMap = () => {
                                                 <thead className="bg-gray-50">
                                                     <tr>
                                                         <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                                        Country
+                                                            Country
                                                         </th>
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                        AI strategy?
+                                                            AI strategy?
                                                         </th>
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                        Ministries involved
+                                                            Ministries involved
                                                         </th>
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                        Agencies
-                                                        </th>
-
-                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                        Research groups
-                                                        </th>
-
-
-
-                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                        Infrastructure
-                                                        </th>
-                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                        Initiatives by sector
+                                                            Agencies
                                                         </th>
 
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                        Internet reach (%)
+                                                            Research groups
+                                                        </th>
+
+
+
+                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                            Infrastructure
+                                                        </th>
+                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                            Initiatives by sector
+                                                        </th>
+
+                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                            Internet reach (%)
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -801,7 +813,7 @@ const AfricaMap = () => {
                     </>
                 ) : (
                     <div className="text-center py-12 text-gray-500">
-                        <p>Sélectionnez un pays sur la carte pour afficher ses initiatives en IA</p>
+                        <p>Select a country on the map to view its AI initiatives</p>
                     </div>
                 )}
             </div>
