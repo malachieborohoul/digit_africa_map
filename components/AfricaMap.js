@@ -6,12 +6,40 @@ const AfricaMap = () => {
     const [hoveredCountry, setHoveredCountry] = useState(null);
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [zoom, setZoom] = useState(1);
+
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+    const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+
+    const handleMouseDown = (e) => {
+        if (zoom > 1) {
+            setIsDragging(true);
+            setStartPos({
+                x: e.clientX - position.x,
+                y: e.clientY - position.y
+            });
+        }
+    };
+
+    const handleMouseMove = (e) => {
+        if (isDragging) {
+            setPosition({
+                x: e.clientX - startPos.x,
+                y: e.clientY - startPos.y
+            });
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
     const svgRef = useRef(null);
+    const containerRef = useRef(null);
 
     const handleZoom = (direction) => {
         setZoom(prev => {
             const newZoom = direction === 'in'
-                ? Math.min(prev * 1.2, 3)
+                ? Math.min(prev * 1.2, 6)  // Augmenté à 5x
                 : Math.max(prev / 1.2, 1);
             return newZoom;
         });
@@ -28,332 +56,626 @@ const AfricaMap = () => {
     };
 
     // Données des pays (à adapter avec vos données réelles)
+    // Données des pays (à adapter avec vos données réelles)
     const countryData = [
         {
-            code: "CM",
-            name: "Cameroun",
-            iaStrategy: "Oui",
-            ministries: "MINPOSTEL, Minesup",
-            agencies: "ANTIC",
-            researchGroups: "LIA, AI-Lab",
-            infrastructures: "GDC Yaoundé",
-            initiatives: "Santé, Éducation",
-            internet: "65%"
-        },
-        {
-            code: "SN",
-            name: "Sénégal",
-            iaStrategy: "Non",
-            ministries: "Ministère Numérique",
-            agencies: "ADETIC",
-            researchGroups: "DakarAI",
-            infrastructures: "Cloud AWS",
-            initiatives: "Agriculture",
-            internet: "75%"
-        },
-        {
             code: "DZ",
-            name: "Algérie",
-            iaStrategy: "Oui",
-            ministries: "Ministère de la Poste et des TIC",
+            name: "Algeria",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Post and ICT",
             agencies: "ARN, CERIST",
-            researchGroups: "CDTA, LabIA",
-            infrastructures: "Datacenter national",
-            initiatives: "Santé, Smart Cities",
+            researchGroups: "CDTA, AI Lab",
+            infrastructures: "National Data Center",
+            initiatives: "Healthcare, Smart Cities",
             internet: "58%"
-        },
-        {
+          },
+          {
             code: "AO",
             name: "Angola",
-            iaStrategy: "Non",
-            ministries: "Ministère des Télécoms",
+            iaStrategy: "No",
+            ministries: "Ministry of Telecommunications",
             agencies: "INACOM",
-            researchGroups: "Université Agostinho Neto",
+            researchGroups: "Agostinho Neto University",
             infrastructures: "Angosat",
-            initiatives: "Éducation",
+            initiatives: "Education",
             internet: "32%"
-        },
-        {
+          },
+          {
             code: "BJ",
-            name: "Bénin",
-            iaStrategy: "Oui",
-            ministries: "Ministère du Numérique",
+            name: "Benin",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Digital",
             agencies: "ABN, ANPTIC",
             researchGroups: "CERCO, LARIA",
-            infrastructures: "Data Center Bénin",
-            initiatives: "Agriculture, E-gouvernement",
+            infrastructures: "Benin Data Center",
+            initiatives: "Agriculture, E-government",
             internet: "45%"
-        },
-        {
+          },
+          // Continue with all 54 African countries...
+          {
             code: "BW",
             name: "Botswana",
-            iaStrategy: "Oui",
-            ministries: "Ministère des Communications",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Communications",
             agencies: "BOCRA",
             researchGroups: "BIUST AI Lab",
             infrastructures: "Botswana Innovation Hub",
-            initiatives: "Mines, Santé",
+            initiatives: "Mining, Healthcare",
             internet: "64%"
-        },
-        {
+          },
+          {
             code: "BF",
             name: "Burkina Faso",
-            iaStrategy: "Non",
-            ministries: "Ministère du Développement Digital",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital Development",
             agencies: "ARCEP",
-            researchGroups: "Université Joseph Ki-Zerbo",
+            researchGroups: "Joseph Ki-Zerbo University",
             infrastructures: "Burkina Data Center",
             initiatives: "Agriculture",
             internet: "30%"
-        },
-        {
+          },
+          {
             code: "BI",
             name: "Burundi",
-            iaStrategy: "Non",
-            ministries: "Ministère des TIC",
+            iaStrategy: "No",
+            ministries: "Ministry of ICT",
             agencies: "ARCT",
-            researchGroups: "Université du Burundi",
-            infrastructures: "Cloud local",
-            initiatives: "E-gouvernement",
+            researchGroups: "University of Burundi",
+            infrastructures: "Local Cloud",
+            initiatives: "E-government",
             internet: "28%"
-        },
-        {
-            code: "CM",
-            name: "Cameroun",
-            iaStrategy: "Oui",
-            ministries: "MINPOSTEL, Minesup",
-            agencies: "ANTIC",
-            researchGroups: "LIA, AI-Lab",
-            infrastructures: "GDC Yaoundé",
-            initiatives: "Santé, Éducation",
-            internet: "65%"
-        },
-        {
+          },
+          {
             code: "CV",
-            name: "Cap-Vert",
-            iaStrategy: "Oui",
-            ministries: "Ministère des TIC",
+            name: "Cape Verde",
+            iaStrategy: "Yes",
+            ministries: "Ministry of ICT",
             agencies: "ANAC",
             researchGroups: "Uni-CV Tech Lab",
             infrastructures: "CV Cables",
-            initiatives: "Tourisme intelligent",
+            initiatives: "Smart Tourism",
             internet: "75%"
-        },
-        // ... (je continue avec d'autres pays)
-        {
-            code: "CI",
-            name: "Côte d'Ivoire",
-            iaStrategy: "Oui",
-            ministries: "Ministère du Numérique",
-            agencies: "ARTCI",
-            researchGroups: "INP-HB, Abidjan AI",
-            infrastructures: "Paiéton Data Center",
-            initiatives: "Agriculture, Fintech",
-            internet: "50%"
-        },
-        {
-            code: "EG",
-            name: "Égypte",
-            iaStrategy: "Oui",
-            ministries: "Ministère des TIC",
-            agencies: "NTRA",
-            researchGroups: "AUC AI Lab, Nile University",
-            infrastructures: "Smart Village Cairo",
-            initiatives: "Santé, Industrie 4.0",
-            internet: "72%"
-        },
-        {
-            code: "ET",
-            name: "Éthiopie",
-            iaStrategy: "Oui",
-            ministries: "Ministère de l'Innovation",
-            agencies: "Ethio Telecom",
-            researchGroups: "AAiT, Addis AI",
-            infrastructures: "Ethiopian Data Center",
-            initiatives: "Agriculture, Logistique",
-            internet: "25%"
-        },
-        {
-            code: "GA",
-            name: "Gabon",
-            iaStrategy: "Non",
-            ministries: "Ministère de l'Économie Numérique",
+          },
+          {
+            code: "CM",
+            name: "Cameroon",
+            iaStrategy: "Yes",
+            ministries: "MINPOSTEL, MINESUP",
+            agencies: "ANTIC",
+            researchGroups: "LIA, AI-Lab",
+            infrastructures: "GDC Yaoundé",
+            initiatives: "Healthcare, Education",
+            internet: "65%"
+          },
+          // Continue with remaining countries...
+          {
+            code: "CF",
+            name: "Central African Republic",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital Economy",
+            agencies: "ARTC",
+            researchGroups: "University of Bangui",
+            infrastructures: "National Data Center",
+            initiatives: "E-government",
+            internet: "11%"
+          },
+          {
+            code: "TD",
+            name: "Chad",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital",
             agencies: "ARCEP",
-            researchGroups: "Université Omar Bongo",
-            infrastructures: "Gabon Cloud",
-            initiatives: "Énergie, Forêts",
-            internet: "60%"
-        },
-        {
+            researchGroups: "University of N'Djamena",
+            infrastructures: "Chad Cloud",
+            initiatives: "Agriculture",
+            internet: "18%"
+          },
+          // Include all countries through to Zimbabwe...
+          {
+            code: "ZW",
+            name: "Zimbabwe",
+            iaStrategy: "Yes",
+            ministries: "Ministry of ICT",
+            agencies: "POTRAZ",
+            researchGroups: "University of Zimbabwe AI Lab",
+            infrastructures: "Harare Data Hub",
+            initiatives: "Agriculture, Mining",
+            internet: "59%"
+          },
+
+          {
+            code: "EG",
+            name: "Egypt",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Communications and Information Technology",
+            agencies: "National Council for AI (NCAI)",
+            researchGroups: "AI Research Center, Cairo University",
+            infrastructures: "Smart Village, Data Centers",
+            initiatives: "Healthcare, Agriculture, Education",
+            internet: "57%"
+          },
+          {
             code: "GH",
             name: "Ghana",
-            iaStrategy: "Oui",
-            ministries: "Ministère des Communications",
-            agencies: "NITA",
-            researchGroups: "KNUST, Accra AI Hub",
-            infrastructures: "Ghana Cloud",
-            initiatives: "Fintech, Agriculture",
-            internet: "53%"
-        },
-        {
-            code: "GN",
-            name: "Guinée",
-            iaStrategy: "Non",
-            ministries: "Ministère des TIC",
-            agencies: "ARPT",
-            researchGroups: "Université Gamal Abdel Nasser",
-            infrastructures: "Conakry Data Hub",
-            initiatives: "Mines",
-            internet: "35%"
-        },
-        {
+            iaStrategy: "Yes",
+            ministries: "Ministry of Communications and Digitalisation",
+            agencies: "National Information Technology Agency (NITA)",
+            researchGroups: "Google AI Research Center Accra, Ghana Tech Lab",
+            infrastructures: "Accra Digital Center",
+            initiatives: "Agriculture, Health, Education",
+            internet: "50%"
+          },
+          {
             code: "KE",
             name: "Kenya",
-            iaStrategy: "Oui",
-            ministries: "Ministère des TIC",
-            agencies: "CAK",
-            researchGroups: "iHub, Nairobi AI",
-            infrastructures: "East Africa Data Center",
-            initiatives: "Mobile Money, Santé",
-            internet: "90%"
-        },
-        {
-            code: "MG",
-            name: "Madagascar",
-            iaStrategy: "Non",
-            ministries: "Ministère des Postes",
-            agencies: "ARTEC",
-            researchGroups: "ICT4D Center",
-            infrastructures: "Antananarivo Hub",
-            initiatives: "Agriculture",
-            internet: "32%"
-        },
-        {
-            code: "MA",
-            name: "Maroc",
-            iaStrategy: "Oui",
-            ministries: "Ministère de l'Industrie et du Numérique",
-            agencies: "ANRT",
-            researchGroups: "AI Movement, UM6P",
-            infrastructures: "Mohammed VI Tech City",
-            initiatives: "Industrie, Agriculture",
-            internet: "85%"
-        },
-        {
-            code: "MZ",
-            name: "Mozambique",
-            iaStrategy: "Non",
-            ministries: "Ministère des Sciences",
-            agencies: "INCM",
-            researchGroups: "UEM Tech Lab",
-            infrastructures: "Maputo Data Center",
-            initiatives: "Énergie",
-            internet: "25%"
-        },
-        {
-            code: "NA",
-            name: "Namibie",
-            iaStrategy: "Oui",
-            ministries: "Ministère des TIC",
-            agencies: "CRAN",
-            researchGroups: "NUST AI Lab",
-            infrastructures: "Windhoek Hub",
-            initiatives: "Mines, Tourisme",
-            internet: "56%"
-        },
-        {
+            iaStrategy: "Yes",
+            ministries: "Ministry of Information, Communications and the Digital Economy",
+            agencies: "Communications Authority of Kenya",
+            researchGroups: "AI & Data Science Lab, University of Nairobi",
+            infrastructures: "Konza Technopolis, National Data Center",
+            initiatives: "Agriculture, Healthcare, Education",
+            internet: "43%"
+          },
+          {
             code: "NG",
             name: "Nigeria",
-            iaStrategy: "Oui",
-            ministries: "Ministère des Communications",
-            agencies: "NCC",
-            researchGroups: "Data Science Nigeria, AILab",
-            infrastructures: "Lagos Tech Zone",
-            initiatives: "Fintech, Santé",
-            internet: "50%"
-        },
-        {
+            iaStrategy: "Yes",
+            ministries: "Federal Ministry of Communications and Digital Economy",
+            agencies: "National Information Technology Development Agency (NITDA)",
+            researchGroups: "Data Science Nigeria, AI Hub Nigeria",
+            infrastructures: "Galaxy Backbone Data Center",
+            initiatives: "Finance, Agriculture, Health",
+            internet: "36%"
+          },
+          {
             code: "RW",
             name: "Rwanda",
-            iaStrategy: "Oui",
-            ministries: "Ministère des TIC",
-            agencies: "RURA",
-            researchGroups: "African Institute for Mathematical Sciences",
+            iaStrategy: "Yes",
+            ministries: "Ministry of ICT and Innovation",
+            agencies: "Rwanda Utilities Regulatory Authority (RURA)",
+            researchGroups: "Carnegie Mellon University Africa, Rwanda AI Research Center",
             infrastructures: "Kigali Innovation City",
-            initiatives: "Smart Cities, Santé",
-            internet: "52%"
-        },
-        {
+            initiatives: "Healthcare, Agriculture, Governance",
+            internet: "26%"
+          },
+          {
+            code: "ST",
+            name: "São Tomé and Príncipe",
+            iaStrategy: "No",
+            ministries: "Ministry of Public Works, Infrastructure and ICT",
+            agencies: "STP Telecom Authority",
+            researchGroups: "University of São Tomé",
+            infrastructures: "STP Cloud Node",
+            initiatives: "Education",
+            internet: "30%"
+          },
+          {
             code: "SN",
-            name: "Sénégal",
-            iaStrategy: "Oui",
-            ministries: "Ministère du Numérique",
-            agencies: "ADETIC",
-            researchGroups: "DakarAI",
-            infrastructures: "Cloud AWS",
-            initiatives: "Agriculture",
-            internet: "75%"
-        },
-        {
-            code: "ZA",
-            name: "Afrique du Sud",
-            iaStrategy: "Oui",
-            ministries: "Ministère des Communications",
-            agencies: "ICASA",
-            researchGroups: "DeepMind Cape Town, Wits University",
-            infrastructures: "Johannesburg Data Center",
-            initiatives: "Mines, Finance",
-            internet: "70%"
-        },
-        {
-            code: "TZ",
-            name: "Tanzanie",
-            iaStrategy: "Non",
-            ministries: "Ministère des TIC",
-            agencies: "TCRA",
-            researchGroups: "DAR AI Lab",
-            infrastructures: "Dodoma Tech Hub",
-            initiatives: "Agriculture",
+            name: "Senegal",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Digital Economy and Telecommunications",
+            agencies: "Commission de Protection des Données Personnelles (CDP)",
+            researchGroups: "AI Research Lab, Cheikh Anta Diop University",
+            infrastructures: "Digital Technology Park of Diamniadio",
+            initiatives: "Agriculture, Education, Governance",
             internet: "46%"
-        },
-        {
+          },
+          {
             code: "TN",
-            name: "Tunisie",
-            iaStrategy: "Oui",
-            ministries: "Ministère des Technologies",
-            agencies: "ATI",
-            researchGroups: "Tunis AI, ENET'Com",
-            infrastructures: "Technopole El Ghazala",
-            initiatives: "Industrie, Santé",
+            name: "Tunisia",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Communication Technologies",
+            agencies: "National Agency for Computer Security (ANSI)",
+            researchGroups: "AI Lab, University of Tunis",
+            infrastructures: "El Ghazala Technopark",
+            initiatives: "Healthcare, Industry, Education",
+            internet: "66%"
+          },
+          {
+            code: "MA",
+            name: "Morocco",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Digital Transition and Administration Reform",
+            agencies: "National Commission for the Control of Personal Data Protection (CNDP)",
+            researchGroups: "AI Research Center, Mohammed V University",
+            infrastructures: "Technopark Casablanca",
+            initiatives: "Agriculture, Industry, Education",
+            internet: "74%"
+          },
+          {
+            code: "ZA",
+            name: "South Africa",
+            iaStrategy: "Yes",
+            ministries: "Department of Communications and Digital Technologies",
+            agencies: "Council for Scientific and Industrial Research (CSIR)",
+            researchGroups: "AI Research Group, University of Pretoria",
+            infrastructures: "Data Centers by Microsoft and Huawei",
+            initiatives: "Mining, Healthcare, Education",
             internet: "68%"
-        },
-        {
+          },
+          {
+            code: "MU",
+            name: "Mauritius",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Technology, Communication and Innovation",
+            agencies: "Mauritius Research and Innovation Council (MRIC)",
+            researchGroups: "AI Lab, University of Mauritius",
+            infrastructures: "Ebene Cybercity",
+            initiatives: "Fintech, Healthcare, Agriculture",
+            internet: "65%"
+          },
+          {
             code: "UG",
-            name: "Ouganda",
-            iaStrategy: "Oui",
-            ministries: "Ministère des TIC",
-            agencies: "UCC",
-            researchGroups: "Makerere AI Lab",
-            infrastructures: "Kampala Innovation Hub",
-            initiatives: "Agriculture, Santé",
-            internet: "42%"
-        },
-        {
-            code: "ZM",
-            name: "Zambie",
-            iaStrategy: "Non",
-            ministries: "Ministère des TIC",
-            agencies: "ZICTA",
-            researchGroups: "UNZA Tech Lab",
-            infrastructures: "Lusaka Data Center",
-            initiatives: "Mines",
-            internet: "38%"
-        }
-        // Ajoutez les autres pays ici...
+            name: "Uganda",
+            iaStrategy: "No",
+            ministries: "Ministry of ICT and National Guidance",
+            agencies: "National Information Technology Authority-Uganda (NITA-U)",
+            researchGroups: "AI Research Lab, Makerere University",
+            infrastructures: "National Data Center",
+            initiatives: "Agriculture, Health",
+            internet: "24%"
+          },
+          {
+            code: "TZ",
+            name: "Tanzania",
+            iaStrategy: "No",
+            ministries: "Ministry of Information, Communication and Information Technology",
+            agencies: "Tanzania Communications Regulatory Authority (TCRA)",
+            researchGroups: "AI Research Group, University of Dar es Salaam",
+            infrastructures: "National ICT Broadband Backbone",
+            initiatives: "Healthcare, Agriculture",
+            internet: "22%"
+          },
+          {
+            code: "SD",
+            name: "Sudan",
+            iaStrategy: "No",
+            ministries: "Ministry of Telecommunication and Digital Transformation",
+            agencies: "National Information Center",
+            researchGroups: "AI Lab, University of Khartoum",
+            infrastructures: "Sudan National Data Center",
+            initiatives: "Agriculture, Health",
+            internet: "28%"
+          },
+          {
+            code: "ET",
+            name: "Ethiopia",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Innovation and Technology",
+            agencies: "Ethiopian Artificial Intelligence Institute",
+            researchGroups: "AI Research Center, Addis Ababa University",
+            infrastructures: "National Data Center",
+            initiatives: "Agriculture, Education, Health",
+            internet: "20%"
+          },
+          {
+            code: "SC",
+            name: "Seychelles",
+            iaStrategy: "Yes",
+            ministries: "Department of ICT",
+            agencies: "Seychelles ICT Authority",
+            researchGroups: "University of Seychelles",
+            infrastructures: "Seychelles Data Cloud",
+            initiatives: "Tourism, Environment",
+            internet: "76%"
+          },
+          {
+            code: "SL",
+            name: "Sierra Leone",
+            iaStrategy: "No",
+            ministries: "Ministry of Information and Communications",
+            agencies: "National Telecommunications Commission (NATCOM)",
+            researchGroups: "AI Research Lab, Fourah Bay College",
+            infrastructures: "National Data Center",
+            initiatives: "Healthcare, Agriculture",
+            internet: "15%"
+          },
+          {
+            code: "ML",
+            name: "Mali",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital Economy and Communication",
+            agencies: "Mali Digital Agency",
+            researchGroups: "AI Research Group, University of Bamako",
+            infrastructures: "National Data Center",
+            initiatives: "Agriculture, Education",
+            internet: "12%"
+          },
+          {
+            code: "NE",
+            name: "Niger",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital Economy and Communication",
+            agencies: "Institut National de la Statistique (INS-Niger)",
+            researchGroups: "Abdou Moumouni University",
+            infrastructures: "National Data Center",
+            initiatives: "Agriculture, Education",
+            internet: "16.9%"
+          },
+          {
+            code: "KM",
+            name: "Comoros",
+            iaStrategy: "No",
+            ministries: "Ministry of Posts and ICT",
+            agencies: "ANRTIC",
+            researchGroups: "Comoros Tech Hub",
+            infrastructures: "Comoros Data Center",
+            initiatives: "E-government",
+            internet: "20%"
+          },
+          {
+            code: "CG",
+            name: "Republic of the Congo",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Digital Economy",
+            agencies: "ARPCE",
+            researchGroups: "Marien Ngouabi University Lab",
+            infrastructures: "Brazzaville Tech Park",
+            initiatives: "Healthcare, Smart Cities",
+            internet: "34%"
+          },
+          {
+            code: "CD",
+            name: "Democratic Republic of the Congo",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital Affairs",
+            agencies: "ARPTC",
+            researchGroups: "Kinshasa Innovation Lab",
+            infrastructures: "National Tech Center",
+            initiatives: "Education",
+            internet: "17%"
+          },
+          {
+            code: "CI",
+            name: "Côte d'Ivoire",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Digital Economy",
+            agencies: "ARTCI",
+            researchGroups: "INPHB AI Research",
+            infrastructures: "Abidjan Digital Center",
+            initiatives: "Agriculture, Fintech",
+            internet: "46%"
+          },
+          {
+            code: "DJ",
+            name: "Djibouti",
+            iaStrategy: "No",
+            ministries: "Ministry of Communication & Technology",
+            agencies: "Djibouti Telecom",
+            researchGroups: "University of Djibouti Lab",
+            infrastructures: "Djibouti Internet Exchange",
+            initiatives: "Logistics",
+            internet: "56%"
+          },
+          {
+            code: "EG",
+            name: "Egypt",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Communications and IT",
+            agencies: "NTRA, ITIDA",
+            researchGroups: "AUC AI Research",
+            infrastructures: "Smart Village Cairo",
+            initiatives: "Healthcare, Fintech",
+            internet: "72%"
+          },
+          {
+            code: "GQ",
+            name: "Equatorial Guinea",
+            iaStrategy: "No",
+            ministries: "Ministry of Telecommunications",
+            agencies: "ORTEL",
+            researchGroups: "UNGE Tech Lab",
+            infrastructures: "Equatorial Data Hub",
+            initiatives: "E-learning",
+            internet: "26%"
+          },
+          {
+            code: "ER",
+            name: "Eritrea",
+            iaStrategy: "No",
+            ministries: "Ministry of ICT",
+            agencies: "EriTel",
+            researchGroups: "Asmara University",
+            infrastructures: "Eritrea Internet Node",
+            initiatives: "Education",
+            internet: "8%"
+          },
+          {
+            code: "SZ",
+            name: "Eswatini",
+            iaStrategy: "Yes",
+            ministries: "Ministry of ICT",
+            agencies: "ESCCOM",
+            researchGroups: "UNESWA Tech Lab",
+            infrastructures: "Mbabane Data Center",
+            initiatives: "E-government",
+            internet: "43%"
+          },
+          {
+            code: "ET",
+            name: "Ethiopia",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Innovation and Technology",
+            agencies: "INSA",
+            researchGroups: "AAU AI Center",
+            infrastructures: "Addis Tech Park",
+            initiatives: "Agriculture, Smart Cities",
+            internet: "25%"
+          },
+          {
+            code: "GA",
+            name: "Gabon",
+            iaStrategy: "Yes",
+            ministries: "Ministry of Digital Economy",
+            agencies: "ARCEP Gabon",
+            researchGroups: "Libreville Tech Lab",
+            infrastructures: "Digital Gabon Hub",
+            initiatives: "Environment, Smart Cities",
+            internet: "62%"
+          },
+          {
+            code: "GM",
+            name: "Gambia",
+            iaStrategy: "No",
+            ministries: "Ministry of Information and Communication Infrastructure",
+            agencies: "PURAG",
+            researchGroups: "UTG AI Lab",
+            infrastructures: "Gambia Tech Space",
+            initiatives: "E-government",
+            internet: "29%"
+          },
+          {
+            code: "GN",
+            name: "Guinea",
+            iaStrategy: "No",
+            ministries: "Ministry of Telecommunications",
+            agencies: "ARPT Guinea",
+            researchGroups: "Conakry Innovation Hub",
+            infrastructures: "Guinea Cloud Center",
+            initiatives: "Health, Education",
+            internet: "33%"
+          },
+          {
+            code: "GW",
+            name: "Guinea-Bissau",
+            iaStrategy: "No",
+            ministries: "Ministry of Transport and Communication",
+            agencies: "ARP",
+            researchGroups: "Bissau Tech Group",
+            infrastructures: "Guinea-Bissau Data Node",
+            initiatives: "Education",
+            internet: "15%"
+          },
+          {
+            code: "LS",
+            name: "Lesotho",
+            iaStrategy: "No",
+            ministries: "Ministry of Communications",
+            agencies: "LCA",
+            researchGroups: "National University of Lesotho",
+            infrastructures: "Lesotho Data Hub",
+            initiatives: "Healthcare",
+            internet: "41%"
+          },
+          {
+            code: "LR",
+            name: "Liberia",
+            iaStrategy: "No",
+            ministries: "Ministry of Posts and Telecommunications",
+            agencies: "LTA",
+            researchGroups: "University of Liberia ICT Center",
+            infrastructures: "Liberia Cloud Gateway",
+            initiatives: "E-learning",
+            internet: "26%"
+          },
+          {
+            code: "LY",
+            name: "Libya",
+            iaStrategy: "No",
+            ministries: "Ministry of Communications",
+            agencies: "LPTIC",
+            researchGroups: "Tripoli AI Unit",
+            infrastructures: "Libya Tech Park",
+            initiatives: "Energy, Transport",
+            internet: "21%"
+          },
+          {
+            code: "MG",
+            name: "Madagascar",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital Development",
+            agencies: "ARTEC",
+            researchGroups: "Antananarivo Digital Lab",
+            infrastructures: "Madagascar Data Exchange",
+            initiatives: "Agriculture, Environment",
+            internet: "34%"
+          },
+          {
+            code: "MW",
+            name: "Malawi",
+            iaStrategy: "No",
+            ministries: "Ministry of Information and Digitalization",
+            agencies: "MACRA",
+            researchGroups: "MUST AI Center",
+            infrastructures: "Malawi Tech Park",
+            initiatives: "Healthcare, Education",
+            internet: "24%"
+          },
+          {
+            code: "MR",
+            name: "Mauritania",
+            iaStrategy: "No",
+            ministries: "Ministry of Digital Transformation",
+            agencies: "ARE",
+            researchGroups: "Nouakchott Tech Incubator",
+            infrastructures: "Mauritania Digital Gateway",
+            initiatives: "E-government, Infrastructure",
+            internet: "22%"
+          },
+          {
+            code: "MZ",
+            name: "Mozambique",
+            iaStrategy: "No",
+            ministries: "Ministry of Science and Technology",
+            agencies: "INCM",
+            researchGroups: "Maputo Tech University",
+            infrastructures: "Mozambique Internet Hub",
+            initiatives: "Disaster Management, Health",
+            internet: "23%"
+          },
+          {
+            code: "NA",
+            name: "Namibia",
+            iaStrategy: "Yes",
+            ministries: "Ministry of ICT",
+            agencies: "CRAN",
+            researchGroups: "UNAM AI Unit",
+            infrastructures: "Windhoek Data Park",
+            initiatives: "Wildlife Monitoring, Smart Cities",
+            internet: "51%"
+          },
+          {
+            code: "RE",
+            name: "Réunion",
+            iaStrategy: "No",
+            ministries: "Department of Digital Affairs",
+            agencies: "Reunion Telecom Board",
+            researchGroups: "University of Reunion Island",
+            infrastructures: "Indian Ocean Tech Center",
+            initiatives: "Sustainable Energy",
+            internet: "85%"
+          },
+          {
+            code: "SO",
+            name: "Somalia",
+            iaStrategy: "No",
+            ministries: "Ministry of Telecom and Technology",
+            agencies: "National Communications Authority",
+            researchGroups: "Mogadishu Digital Center",
+            infrastructures: "Somalia Internet Exchange",
+            initiatives: "E-government",
+            internet: "11%"
+          },
+          {
+            code: "SS",
+            name: "South Sudan",
+            iaStrategy: "No",
+            ministries: "Ministry of ICT and Postal Services",
+            agencies: "NCA",
+            researchGroups: "Juba University Tech Unit",
+            infrastructures: "South Sudan Digital Node",
+            initiatives: "PeaceTech, Education",
+            internet: "9%"
+          },
+     
+        
+        
+        
     ];
+
     const selectedCount = countryData.find(country => country.code === selectedCountry);
     return (
-        <div className="relative w-full min-h-screen flex flex-col items-center p-4 bg-gray-50">
+        <div className="relative w-full min-h-screen flex flex-col items-center p-4 ">
             {/* Contrôles de zoom */}
             <div className="absolute top-6 right-6 z-10 flex gap-2">
                 <button
@@ -371,13 +693,24 @@ const AfricaMap = () => {
             </div>
 
             {/* Conteneur de la carte */}
-            <div className="w-full h-[60vh] max-w-[1800px] mb-8 border-2 border-gray-200 rounded-xl shadow-lg overflow-hidden">
+            <div
+                ref={containerRef}
+                className="w-full h-[70vh] max-w-[2000px] mb-8 overflow-hidden relative"
+            >
                 <svg
                     ref={svgRef}
                     viewBox="0 0 1000 1000"
                     className="w-full h-full bg-white transition-transform duration-300"
-                    style={{ transform: `scale(${zoom})` }}
+                    style={{
+                        transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+                        cursor: zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
+                    }}
                     preserveAspectRatio="xMidYMid meet"
+                    // Ajoutez ces handlers au conteneur SVG :
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseUp}
                 >
                     {africanCountries.map((country) => (
                         <path
@@ -394,12 +727,13 @@ const AfricaMap = () => {
                 </svg>
             </div>
 
+
             {/* Tableau d'informations */}
-            <div className="w-full max-w-6xl bg-white rounded-lg shadow-md border border-gray-200 p-6">
+            <div className="w-full  p-6">
                 {selectedCount ? (
                     <>
                         <h2 className="text-2xl font-bold mb-6 text-gray-800">
-                            Initiatives IA en {selectedCount.name} ({selectedCount.code})
+                        AI initiatives in {selectedCount.name} ({selectedCount.code})
                         </h2>
 
                         <div className="px-4 sm:px-6 lg:px-8">
@@ -412,33 +746,33 @@ const AfricaMap = () => {
                                                 <thead className="bg-gray-50">
                                                     <tr>
                                                         <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                                            Pays
+                                                        Country
                                                         </th>
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Stratégie IA ?
+                                                        AI strategy?
                                                         </th>
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Ministères impliqués
+                                                        Ministries involved
                                                         </th>
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Agences
-                                                        </th>
-
-                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Groupes de recherche
-                                                        </th>
-
-                                                     
-
-                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Infrastructures
-                                                        </th>
-                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Initiatives par secteur
+                                                        Agencies
                                                         </th>
 
                                                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Internet (%)
+                                                        Research groups
+                                                        </th>
+
+
+
+                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                        Infrastructure
+                                                        </th>
+                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                        Initiatives by sector
+                                                        </th>
+
+                                                        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                        Internet reach (%)
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -463,50 +797,7 @@ const AfricaMap = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="overflow-x-auto">
-                            <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-gray-50">
-                                    <tr>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pays</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stratégie IA ?</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ministères impliqués</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Agences</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Groupes de recherche</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Infrastructures</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Initiatives par secteur</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Internet (%)</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {selectedCount.name}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {selectedCount.iaStrategy}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {selectedCount.ministries}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {selectedCount.agencies}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {selectedCount.researchGroups}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {selectedCount.infrastructures}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {selectedCount.initiatives}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {selectedCount.internet}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> */}
+
                     </>
                 ) : (
                     <div className="text-center py-12 text-gray-500">
