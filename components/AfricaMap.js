@@ -745,7 +745,7 @@ const AfricaMap = () => {
                 {selectedCount ? (
                     <>
                         <h2 className="text-2xl font-bold mb-6 text-gray-800">
-                            AI initiatives in {selectedCount.name} ({selectedCount.code})
+                            AI initiatives in {selectedCount.name} 
                         </h2>
 
                         <div className="px-4 sm:px-6 lg:px-8">
