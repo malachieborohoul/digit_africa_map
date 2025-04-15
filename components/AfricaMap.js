@@ -699,7 +699,7 @@ const AfricaMap = () => {
                   Mapping AI in Africa
                   </h1>
                   <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
-                  An interactive map of Africa that reveals each country's journey in artificial intelligence. Click on a country to explore its AI strategy, key government ministries and agencies, research groups and associations, digital infrastructure, internet penetration, and AI-driven initiatives across sectors such as education, health, agriculture, and more.
+                  An interactive map of Africa that reveals each country&rsquo;s journey in artificial intelligence. Click on a country to explore its AI strategy, key government ministries and agencies, research groups and associations, digital infrastructure, internet penetration, and AI-driven initiatives across sectors such as education, health, agriculture, and more.
                   A visual tool to understand how Africa is shaping its AI future.
                   </p>
                 </div>
