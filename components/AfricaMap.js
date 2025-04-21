@@ -779,12 +779,12 @@ const AfricaMap = () => {
             </div>
 
             {/* Tableau d'informations */}
-            <div className="w-full  p-6">
+            <div className="w-full  ">
                 {selectedCount ? (
                     <>
-                        <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                        {/* <h2 className="text-2xl font-bold mb-6 text-gray-800">
                             AI initiatives in {selectedCount.name}
-                        </h2>
+                        </h2> */}
 
                         <div className="px-4 sm:px-6 lg:px-8">
 
