@@ -284,17 +284,23 @@ const AfricaMap = () => {
             initiatives: "Agriculture, Education, Governance",
             internet: "46%"
         },
-        // {
-        //     code: "TN",
-        //     name: "Tunisia",
-        //     iaStrategy: "Yes",
-        //     ministries: "Ministry of Communication Technologies",
-        //     agencies: "National Agency for Computer Security (ANSI)",
-        //     researchGroups: "AI Lab, University of Tunis",
-        //     infrastructures: "El Ghazala Technopark",
-        //     initiatives: "Healthcare, Industry, Education",
-        //     internet: "66%"
-        // },
+        {
+            code: "TN",
+            name: "Tunisia",
+            iaStrategy: "Yes",
+            ministries: [
+               " Ministry of Communication Technologies and Digital Economy",
+                "Ministry of Higher Education and Scientific Research",
+                
+            ],
+            agencies: [
+                "Agence Nationale de la Sécurité Informatique (ANSI)"
+            ],
+            researchGroups: "AI Lab, University of Tunis",
+            infrastructures: "El Ghazala Technopark",
+            initiatives: "Healthcare, Industry, Education",
+            internet: "66%"
+        },
         // {
         //     code: "MA",
         //     name: "Morocco",
