@@ -50,7 +50,7 @@ const AfricaMap = () => {
     };
 
     const getCountryFill = (countryId) => {
-        const highlightCountries = ["CM", "KE", "SN", "ZA"];
+        const highlightCountries = ["CM", "KE", "SN", "ZA", "TN"];
         if (highlightCountries.includes(countryId)) return 'fill-purple-500';
         if (selectedCountry === countryId) return 'fill-indigo-400';
         if (hoveredCountry === countryId) return 'fill-purple-200';
